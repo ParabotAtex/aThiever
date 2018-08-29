@@ -7,7 +7,11 @@ import org.rev317.min.api.methods.Inventory;
 import org.rev317.min.api.methods.SceneObjects;
 import org.rev317.min.api.wrappers.SceneObject;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class Picker implements Strategy {
+    private static SceneObject currentStall;
+
     @Override
     public boolean activate() {
         return !Inventory.isFull()
@@ -17,10 +21,17 @@ public class Picker implements Strategy {
 
     @Override
     public void execute() {
-        SceneObject stall = SceneObjects.getClosest(11730);
-        if(stall != null) {
-            stall.interact(SceneObjects.Option.FIRST);
+        if(currentStall != null) {
+            currentStall.interact(SceneObjects.Option.FIRST);
             Time.sleep(500,1000);
+        } else {
+            selectNewStall();
         }
+    }
+
+    public static void selectNewStall() {
+        SceneObject[] stalls = SceneObjects.getNearest(11730);
+        int r = ThreadLocalRandom.current().nextInt(0, stalls.length);
+        currentStall = stalls[r];
     }
 }

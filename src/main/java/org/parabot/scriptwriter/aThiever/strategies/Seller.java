@@ -7,8 +7,6 @@ import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.*;
 import org.rev317.min.api.wrappers.Npc;
 
-import static org.rev317.min.api.methods.Walking.walkTo;
-
 public class Seller implements Strategy {
     @Override
     public boolean activate() {
@@ -38,7 +36,8 @@ public class Seller implements Strategy {
                     return !Inventory.isFull();
                 }
             }, 3000);
-            walkTo(Players.getMyPlayer().getLocation());
+            Menu.clickButton(3902);
+            Picker.selectNewStall();
             Time.sleep(new SleepCondition() {
                 @Override
                 public boolean isValid() {
