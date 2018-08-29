@@ -20,7 +20,7 @@ public class WhitelistAntiBan implements Strategy {
         if(whitelist == null) {
             enabled = false;
         } else {
-            whitelist.add(Players.getMyPlayer().getName());
+            whitelist.add(Players.getMyPlayer().getName().toLowerCase());
         }
     }
 
@@ -31,13 +31,12 @@ public class WhitelistAntiBan implements Strategy {
 
     @Override
     public void execute() {
-        Logger.addMessage("Non-whitelisted players in the area, pausing");
-        Time.sleep(100);
+        Time.sleep(1000);
     }
 
     private boolean playersClose() {
         for(Player p : Players.getPlayers()) {
-            if(!whitelist.contains(p.getName())) {
+            if(!whitelist.contains(p.getName().toLowerCase())) {
                 return true;
             }
         }

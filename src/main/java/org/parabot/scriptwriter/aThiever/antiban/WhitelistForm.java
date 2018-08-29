@@ -42,7 +42,7 @@ public class WhitelistForm extends JFrame {
         for(String s : strs) {
              s = s.trim();
              if(!s.equals("")) {
-                 names.add(s);
+                 names.add(s.toLowerCase());
              }
         }
     }

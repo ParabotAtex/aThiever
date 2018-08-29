@@ -4,6 +4,7 @@ import org.parabot.environment.scripts.Category;
 import org.parabot.environment.scripts.Script;
 import org.parabot.environment.scripts.ScriptManifest;
 import org.parabot.environment.scripts.framework.Strategy;
+import org.parabot.scriptwriter.aThiever.strategies.Relog;
 import org.rev317.min.script.ScriptEngine;
 import org.parabot.scriptwriter.aThiever.randoms.Trivia;
 import org.parabot.scriptwriter.aThiever.antiban.WhitelistAntiBan;
@@ -23,6 +24,7 @@ public class Core extends Script {
 
     @Override
     public boolean onExecute() {
+        strategies.add(new Relog());
         strategies.add(new WhitelistAntiBan());
         strategies.add(new Seller());
         strategies.add(new Picker());
