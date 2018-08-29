@@ -7,8 +7,6 @@ import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.*;
 import org.rev317.min.api.wrappers.Npc;
 
-import java.awt.event.KeyEvent;
-
 import static org.rev317.min.api.methods.Walking.walkTo;
 
 public class Seller implements Strategy {
@@ -34,7 +32,6 @@ public class Seller implements Strategy {
             Time.sleep(1500);
             Keyboard.getInstance().sendKeys("28");
             Time.sleep(500);
-            Keyboard.getInstance().clickKey(KeyEvent.VK_ENTER);
             Time.sleep(new SleepCondition() {
                 @Override
                 public boolean isValid() {
