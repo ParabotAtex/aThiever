@@ -22,6 +22,9 @@ public class Picker implements Strategy {
     @Override
     public void execute() {
         if(currentStall != null) {
+            if(currentStall.distanceTo() > 10) {
+                selectNewStall();
+            }
             currentStall.interact(SceneObjects.Option.FIRST);
             Time.sleep(500,1000);
         } else {
