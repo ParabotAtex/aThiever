@@ -5,6 +5,7 @@ import org.parabot.environment.input.Keyboard;
 import org.parabot.environment.scripts.framework.SleepCondition;
 import org.parabot.environment.scripts.framework.Strategy;
 import org.rev317.min.api.methods.*;
+import org.rev317.min.api.wrappers.Item;
 import org.rev317.min.api.wrappers.Npc;
 
 public class Seller implements Strategy {
@@ -26,7 +27,8 @@ public class Seller implements Strategy {
             }, 3000);
         }
         if(Interfaces.getOpenInterfaceId() == 3824) {
-            Menu.sendAction(53, 1891, 0, 3823, 2);
+            Item cake = Inventory.getItem(1892);
+            Menu.sendAction(53, cake.getId() - 1, cake.getSlot(), 3823);
             Time.sleep(1500);
             Keyboard.getInstance().sendKeys("28");
             Time.sleep(500);
@@ -36,14 +38,16 @@ public class Seller implements Strategy {
                     return !Inventory.isFull();
                 }
             }, 3000);
-            Menu.clickButton(3902);
-            Picker.selectNewStall();
-            Time.sleep(new SleepCondition() {
-                @Override
-                public boolean isValid() {
-                    return Interfaces.getOpenInterfaceId() == -1;
-                }
-            }, 2000);
+            if(!Inventory.isFull()) {
+                Menu.clickButton(3902);
+                Time.sleep(new SleepCondition() {
+                    @Override
+                    public boolean isValid() {
+                        return Interfaces.getOpenInterfaceId() == -1;
+                    }
+                }, 2000);
+                Picker.selectNewStall();
+            }
         }
     }
 }

@@ -19,7 +19,7 @@ import java.util.ArrayList;
         category = Category.THIEVING,
         description = "THIEVING MONEY",
         name = "aThiever", servers = { "Revival" },
-        version = 0.2)
+        version = 0.3)
 public class Core extends Script {
     ArrayList<Strategy> strategies = new ArrayList<>();
     Trivia trivia;

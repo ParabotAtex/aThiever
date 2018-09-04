@@ -47,7 +47,7 @@ public class WhitelistAntiBan implements Strategy {
         boolean activate = false;
         try {
             activate = playersClose();
-            setRandoms(activate);
+            setRandoms(!activate);
         } catch(NullPointerException ex) {
             ex.printStackTrace();
         }

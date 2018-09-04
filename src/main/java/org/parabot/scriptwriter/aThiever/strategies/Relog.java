@@ -36,5 +36,6 @@ public class Relog implements Strategy {
                 }
             }, 2000);
         }
+        Picker.reset();
     }
 }
